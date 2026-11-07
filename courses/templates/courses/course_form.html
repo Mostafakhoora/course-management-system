@@ -1,0 +1,97 @@
+
+{% extends 'courses/base.html' %}
+
+{% block title %}
+    {% if course %}ویرایش دوره{% else %}افزودن دوره{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<h1>
+    {% if course %}ویرایش دوره{% else %}افزودن دوره جدید{% endif %}
+</h1>
+
+<div class="card">
+
+    {% if errors %}
+        <p>اطلاعات واردشده معتبر نیست. لطفاً خطاها را بررسی کن.</p>
+        <ul>
+            {% for field, error_list in errors.items %}
+                {% for error in error_list %}
+                    <li>{{ field }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <p>
+            <label>عنوان دوره</label><br>
+            <input
+                type="text"
+                name="title"
+                maxlength="200"
+                value="{{ course.title|default:'' }}"
+                required
+            >
+        </p>
+
+        <p>
+            <label>توضیحات</label><br>
+            <textarea name="description" rows="4" required>{{ course.description|default:'' }}</textarea>
+        </p>
+
+        <p>
+            <label>قیمت</label><br>
+            <input
+                type="number"
+                name="price"
+                min="0"
+                step="0.01"
+                value="{{ course.price|default:'' }}"
+                required
+            >
+        </p>
+
+        <p>
+            <label>سطح دوره</label><br>
+            <select name="level" required>
+                <option value="beginner"
+                    {% if course.level == 'beginner' %}selected{% endif %}>
+                    مقدماتی
+                </option>
+
+                <option value="intermediate"
+                    {% if course.level == 'intermediate' %}selected{% endif %}>
+                    متوسط
+                </option>
+
+                <option value="advanced"
+                    {% if course.level == 'advanced' %}selected{% endif %}>
+                    پیشرفته
+                </option>
+            </select>
+        </p>
+
+        <p>
+            <label>ظرفیت</label><br>
+            <input
+                type="number"
+                name="capacity"
+                min="1"
+                value="{{ course.capacity|default:'' }}"
+                required
+            >
+        </p>
+
+        <button type="submit" class="button">
+            {% if course %}ذخیره تغییرات{% else %}ثبت دوره{% endif %}
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

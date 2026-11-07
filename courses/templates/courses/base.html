@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}مدیریت دوره‌ها{% endblock %}</title>
+    
+    <nav>
+     <a href="/api/dashboard/">داشبورد</a>
+     <a href="/api/web/courses/">دوره‌ها</a>
+     <a href="/api/web/students/">دانشجوها</a>
+     <a href="/api/web/courses/create/">افزودن دوره</a>
+     <a href="/api/web/students/create/">افزودن دانشجو</a>
+     <a href="/api/web/enroll/">ثبت‌نام در دوره</a>
+     <a href="/api/courses/">API دوره‌ها</a>
+     <a href="/api/students/">API دانشجوها</a>
+    
+    </nav>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        header {
+            background: #0f172a;
+            color: white;
+            padding: 20px 30px;
+        }
+
+        header h2 {
+            margin: 0;
+        }
+
+        nav {
+            background: white;
+            padding: 15px 30px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        nav a {
+            color: #334155;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #00000008;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: right;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #f8fafc;
+        }
+
+        input, select {
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            margin: 5px;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 0 10px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .table-wrapper {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>پنل مدیریت آموزش</h2>
+    </header>
+
+
+    <main>
+        {% if messages %}
+        {% for message in messages %}
+            <div class="card">
+            {{ message }}
+            </div>
+        {% endfor %}
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

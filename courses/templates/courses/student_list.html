@@ -1,0 +1,46 @@
+
+{% extends 'courses/base.html' %}
+
+{% block content %}
+<h2>مدیریت دانشجوها</h2>
+
+<a href="/api/web/students/create/">ثبت دانشجوی جدید</a>
+
+<div>
+    <a href="/api/web/students/create/">ثبت دانشجوی جدید</a>
+    <a href="/api/web/enroll/">ثبت‌نام دانشجو در دوره</a>
+</div>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>شناسه</th>
+            <th>نام و نام خانوادگی</th>
+            <th>ایمیل</th>
+            <th>دوره‌ها</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.full_name }}</td>
+            <td>{{ student.email }}</td>
+            <td>
+                {% for course in student.courses.all %}
+                    {{ course.title }}{% if not forloop.last %}، {% endif %}
+                {% empty %}
+                    بدون ثبت‌نام
+                {% endfor %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">هنوز دانشجویی ثبت نشده است.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,97 @@
+
+{% extends 'courses/base.html' %}
+
+{% block title %}لیست دوره‌ها{% endblock %}
+
+{% block content %}
+
+<h1>دوره‌های آموزشی</h1>
+
+<div class="card">
+    <form method="get">
+        <input
+            type="text"
+            name="search"
+            placeholder="جست‌وجوی عنوان دوره"
+            value="{{ request.GET.search|default:'' }}"
+        >
+
+        <select name="level">
+            <option value="">همه سطح‌ها</option>
+            <option value="beginner">مقدماتی</option>
+            <option value="intermediate">متوسط</option>
+            <option value="advanced">پیشرفته</option>
+        </select>
+
+        <button class="button" type="submit">
+            جست‌وجو
+        </button>
+    </form>
+</div>
+
+<div class="card table-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>عملیات</th>
+                <th>عنوان</th>
+                <th>قیمت</th>
+                <th>سطح</th>
+                <th>ظرفیت</th>
+                <th>ثبت‌نام‌شده</th>
+                <th>ظرفیت باقی‌مانده</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for course in courses %}
+            <tr>
+                <td>{{ course.title }}</td>
+                <td>{{ course.price }}</td>
+                <td>{{ course.get_level_display }}</td>
+                <td>{{ course.capacity }}</td>
+                <td>{{ course.students.count }}</td>
+                <td>
+                    {% if course.capacity > course.students.count %}
+                        {{ course.remaining_capacity }}
+                    {% else %}
+                        ۰
+                    {% endif %}
+
+                <td>
+                    <a
+                        class="button"
+                        href="/api/web/courses/{{ course.id }}/edit/"
+                    >
+                     ویرایش
+                    </a>
+
+                    <form
+                        method="post"
+                        action="/api/web/courses/{{ course.id }}/delete/"
+                        style="display:inline;"
+                        onsubmit="return confirm('از حذف این دوره مطمئنی؟');"
+                    >
+                        {% csrf_token %}
+                        <button
+                            type="submit"
+                            class="button"
+                            style="background:#dc2626;"
+                        >
+                         حذف
+                        </button>
+                    </form>
+                </td>
+
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">دوره‌ای پیدا نشد.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

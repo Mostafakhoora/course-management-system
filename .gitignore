@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.log
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Django
+db.sqlite3
+staticfiles/
+media/
+
+# Database backups
+*.dump
+*.sql
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+courses_data.json

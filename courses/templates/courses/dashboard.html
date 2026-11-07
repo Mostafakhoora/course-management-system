@@ -1,0 +1,27 @@
+
+{% extends 'courses/base.html' %}
+
+{% block title %}داشبورد{% endblock %}
+
+{% block content %}
+
+<h1>داشبورد مدیریت</h1>
+<p>به سامانه مدیریت دوره‌های آموزشی خوش آمدید.</p>
+
+<div class="card">
+    <h3>مدیریت دوره‌ها</h3>
+    <p>دوره‌های آموزشی را مشاهده و جست‌وجو کنید.</p>
+    <a href="/api/web/courses/" class="button">
+        مشاهده دوره‌ها
+    </a>
+</div>
+
+<div class="card">
+    <h3>مدیریت دانشجوها</h3>
+    <p>برای مشاهده اطلاعات دانشجوها از API استفاده کنید.</p>
+    <a href="/api/students/" class="button">
+        مشاهده دانشجوها
+    </a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+
+{% extends 'courses/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>مدیریت APIها</h1>
+    <p>از این بخش می‌تونی به APIهای پروژه دسترسی داشته باشی.</p>
+
+    <a href="{% url 'dashboard' %}" class="btn">
+        بازگشت به داشبورد
+    </a>
+
+    <hr>
+
+    <h3>API دانشجوها</h3>
+    <a href="/api/students/">ورود به API دانشجوها</a>
+    
+    <h3>API دوره‌ها</h3>
+    <a href="/api/courses/">ورود به API دوره‌ها</a>
+</div>
+{% endblock %}
