@@ -18,10 +18,10 @@ A Django-based course management system built with Python, Django and PostgreSQL
 ## Screenshots
 
 ### Home Page
-![Home Page](screenshots/home.png)
+![Home Page](screenshots/home(2).png)
 
 ### Courses Page
-![Courses Page](screenshots/courses-student-detail.png)
+![Courses Page](screenshots/coures-student-detail.png)
 
 ### Admin Panel
 ![Admin Panel](screenshots/admin.png)
