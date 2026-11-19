@@ -1,0 +1,82 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه پیدا نشد | Course Management</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Tahoma, sans-serif;
+            background: #0f172a;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .error-container {
+            max-width: 550px;
+        }
+
+        .error-code {
+            font-size: 120px;
+            font-weight: bold;
+            color: #818cf8;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #94a3b8;
+            line-height: 2;
+            margin-bottom: 30px;
+        }
+
+        a {
+            display: inline-block;
+            background: #6366f1;
+            color: white;
+            text-decoration: none;
+            padding: 13px 30px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            background: #4f46e5;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="error-container">
+        <div class="error-code">404</div>
+
+        <h1>صفحه موردنظر پیدا نشد!</h1>
+
+        <p>
+            متأسفانه صفحه‌ای که دنبالش هستید وجود ندارد
+            یا ممکن است آدرس آن تغییر کرده باشد.
+        </p>
+
+        <a href="/">بازگشت به صفحه اصلی</a>
+    </div>
+</body>
+</html>
